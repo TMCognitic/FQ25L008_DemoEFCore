@@ -14,9 +14,17 @@ namespace DemoEFCore.Dal.Configurations
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.ToTable("Category");
+            builder.ToTable("Category", t => {
+                    t.HasCheckConstraint("CK_Category_Name", "LEN(TRIM(Name)) > 0");
+                });
+            
             builder.Property(c => c.Name)
                 .HasColumnType("NVARCHAR(50)");
+
+            builder.HasIndex(c => c.Name)
+                .IsUnique(true);
+
+            builder.HasData(new Category() { Id = 1, Name = "Frais" }, new Category() { Id = 2, Name = "Condiment" });
         }
     }
 }
