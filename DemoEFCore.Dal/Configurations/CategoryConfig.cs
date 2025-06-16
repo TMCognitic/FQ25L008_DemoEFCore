@@ -24,7 +24,7 @@ namespace DemoEFCore.Dal.Configurations
             builder.HasIndex(c => c.Name)
                 .IsUnique(true);
 
-            builder.HasData(new Category() { Id = 1, Name = "Frais" }, new Category() { Id = 2, Name = "Condiment" });
+            builder.HasData(new Category() { Id = 1, Name = "Frais" }, new Category() { Id = 2, Name = "Glaces" });
         }
     }
 }

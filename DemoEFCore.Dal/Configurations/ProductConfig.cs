@@ -24,6 +24,10 @@ namespace DemoEFCore.Dal.Configurations
                 new Product() { ProductId = 1, Name = "Salade", Description = "Salade du jardin", Price = 3.99, CategoryId = 1 },
                 new Product() { ProductId = 2, Name = "Glace", Description = "Häagen-Dazs", Price = 7.99, CategoryId = 2 }
                 );
+
+            builder.HasOne(p => p.Category)
+                .WithMany(c => c.Products)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

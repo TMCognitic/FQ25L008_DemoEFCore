@@ -10,5 +10,8 @@ namespace DemoEFCore.Dal.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        //Propriété de navigation
+        public virtual IEnumerable<Product> Products { get; set; } = new List<Product>();
     }
 }
